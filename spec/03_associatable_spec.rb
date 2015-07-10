@@ -11,10 +11,11 @@ describe 'AssocOptions' do
     end
 
     it 'allows overrides' do
-      options = BelongsToOptions.new('owner',
-                                     foreign_key: :human_id,
-                                     class_name: 'Human',
-                                     primary_key: :human_id
+      options = BelongsToOptions.new(
+        'owner',
+        foreign_key: :human_id,
+        class_name: 'Human',
+        primary_key: :human_id
       )
 
       expect(options.foreign_key).to eq(:human_id)
@@ -33,10 +34,11 @@ describe 'AssocOptions' do
     end
 
     it 'allows overrides' do
-      options = HasManyOptions.new('cats', 'Human',
-                                   foreign_key: :owner_id,
-                                   class_name: 'Kitten',
-                                   primary_key: :human_id
+      options = HasManyOptions.new(
+        'cats', 'Human',
+        foreign_key: :owner_id,
+        class_name: 'Kitten',
+        primary_key: :human_id
       )
 
       expect(options.foreign_key).to eq(:owner_id)
@@ -65,7 +67,7 @@ describe 'AssocOptions' do
       options = HasManyOptions.new('cats', 'Human')
       expect(options.model_class).to eq(Cat)
     end
-    
+
     it '#table_name returns table name of associated object' do
       options = BelongsToOptions.new('human')
       expect(options.table_name).to eq('humans')
